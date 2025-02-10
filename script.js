@@ -1,3 +1,4 @@
+// declaration of variables
 let xp = 0;
 let health = 100;
 let gold = 50;
@@ -6,6 +7,7 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
+// selection of the html elements
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
@@ -16,12 +18,16 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+
+//creating the array for weapons
 const weapons = [
   { name: 'stick', power: 5 },
   { name: 'dagger', power: 30 },
   { name: 'claw hammer', power: 50 },
   { name: 'sword', power: 100 }
 ];
+
+// creating array for monsters
 const monsters = [
   {
     name: "slime",
@@ -39,6 +45,8 @@ const monsters = [
     health: 300
   }
 ]
+
+//location for the functions arrays
 const locations = [
   {
     name: "town square",
@@ -95,6 +103,7 @@ button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
+//the update function reference 
 function update(location) {
   monsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
@@ -106,6 +115,7 @@ function update(location) {
   text.innerHTML = location.text;
 }
 
+// function declarations 
 function goTown() {
   update(locations[0]);
 }
@@ -119,11 +129,11 @@ function goCave() {
 }
 
 function buyHealth() {
-  if (gold >= 10) {
+  if (gold >= 10) {  // check if gold is greater or equals to 10
     gold -= 10;
     health += 10;
-    goldText.innerText = gold;
-    healthText.innerText = health;
+    goldText.innerText = gold; // update gold text
+    healthText.innerText = health; // update health text
   } else {
     text.innerText = "You do not have enough gold to buy health.";
   }
@@ -133,9 +143,9 @@ function buyWeapon() {
   if (currentWeapon < weapons.length - 1) {
     if (gold >= 30) {
       gold -= 30;
-      currentWeapon++;
-      goldText.innerText = gold;
-      let newWeapon = weapons[currentWeapon].name;
+      currentWeapon++; // increment current weapon index 
+      goldText.innerText = gold; //updat gold text
+      let newWeapon = weapons[currentWeapon].name; // get the name of the new weapon
       text.innerText = "You now have a " + newWeapon + ".";
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
