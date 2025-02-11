@@ -142,7 +142,7 @@ function buyHealth() {
 function buyWeapon() {
   if (currentWeapon < weapons.length - 1) {
     if (gold >= 30) {
-      gold -= 30;
+      gold -= 30; //decrement gold by 30 
       currentWeapon++; // increment current weapon index 
       goldText.innerText = gold; //updat gold text
       let newWeapon = weapons[currentWeapon].name; // get the name of the new weapon
